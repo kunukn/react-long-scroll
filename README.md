@@ -1,3 +1,19 @@
+Demo
+https://codepen.io/kunukn/full/JOZybL/
+
+Inspiration from
+https://youtu.be/7S8v8jfLb1Q?t=36m
+
+Michael Jackson: Rendering with React | js.la January 2016
+
+09-render-optimizations
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
