@@ -38,9 +38,7 @@ export default class Scroll extends React.Component {
     const { availableHeight, scrollTop } = this.state;
     const scrollBottom = scrollTop + availableHeight;
 
-    const startIndex = Math.max(
-      0, 
-      Math.floor(scrollTop / rowHeight) - 20);
+    const startIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - 20);
 
     const endIndex = Math.min(
       numRows,
@@ -50,18 +48,21 @@ export default class Scroll extends React.Component {
     const items = [];
     let index = startIndex;
     while (index < endIndex) {
-      items.push(<li key={index}>item {index + 1}</li>);
+      items.push(<li key={index}><div>item {index + 1}</div></li>);
       index++;
     }
 
     return (
-      <div className="scroll-container" onScroll={this.handleScroll}>
-        <ul
-          className="scroll"
-          style={{ paddingTop: startIndex * rowHeight, height: totalHeight }}
-        >
-          {items}
-        </ul>
+      <div className="scroll">
+        <div className="scroll__overflow" onScroll={this.handleScroll}>
+          <ul
+            className="scroll__list"
+            style={{ paddingTop: startIndex * rowHeight, height: totalHeight }}
+          >
+            {items}
+          </ul>
+        </div>
+        <pre>{JSON.stringify({availableHeight,scrollTop,scrollBottom,startIndex,endIndex},null,2)}</pre>
       </div>
     );
   }

@@ -3,15 +3,16 @@
 }
 
 .app {
-  
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.scroll-container {
+.scroll__overflow {
   overflow-y: scroll;
   max-height: 300px; /* even divide-able by li height */
 }
 
-.scroll {
+.scroll__list {
   background: skyblue;
   margin: 0;
   padding: 0;
@@ -19,13 +20,13 @@
   overflow: hidden;
 }
 
-.scroll li {
+.scroll__list > li {
   height: 50px;
   outline: 1px solid;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
   padding: 0;
   background: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

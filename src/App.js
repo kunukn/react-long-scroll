@@ -10,7 +10,7 @@ const App = props => {
 
   return (
     <div className="app">
-      <Scroll numRows={7000} rowHeight={50} />
+      <Scroll numRows={100000} rowHeight={50} />
     </div>
   );
 };
