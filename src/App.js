@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Scroll from './Scroll';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+const App = props => {
+  let names = [];
+  for (let i = 1; i <= 7000; i++) {
+    names.push('random name ' + i);
   }
-}
+
+  return (
+    <div className="app">
+      <Scroll numRows={7000} rowHeight={50} />
+    </div>
+  );
+};
 
 export default App;
