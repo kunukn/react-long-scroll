@@ -1,5 +1,15 @@
-* {
+*,:before,:after {
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding-top: 2rem;
 }
 
 .app {
@@ -13,7 +23,7 @@
 }
 
 .scroll__list {
-  background: skyblue;
+  background: linear-gradient(0deg, hotpink, lightblue);
   margin: 0;
   padding: 0;
   pointer-events: none;
@@ -21,12 +31,18 @@
 }
 
 .scroll__list > li {
-  height: 50px;
-  outline: 1px solid;
+  height: 50px;  
   margin: 0;
   padding: 0;
-  background: lightblue;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.scroll__list > li > * {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1 1 0%;
+  border-bottom: 1px solid #777;
 }

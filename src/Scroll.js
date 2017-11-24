@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class Scroll extends React.Component {
+export default 
+class Scroll extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,8 +18,12 @@ export default class Scroll extends React.Component {
   };
 
   handleWindowResize = event => {
+    const scrollElement = ReactDOM.findDOMNode(this);
+    const scrollOverflowElement = scrollElement.querySelector(
+      '.scroll__overflow'
+    );
     this.setState({
-      availableHeight: ReactDOM.findDOMNode(this).clientHeight,
+      availableHeight: scrollOverflowElement.clientHeight,
     });
   };
 
@@ -32,37 +37,59 @@ export default class Scroll extends React.Component {
   }
 
   render() {
-    const { rowHeight, numRows } = this.props;
-    const totalHeight = rowHeight * numRows;
+    const { itemHeight, items, renderItem } = this.props;
+    const totalHeight = itemHeight * items;
 
     const { availableHeight, scrollTop } = this.state;
     const scrollBottom = scrollTop + availableHeight;
 
-    const startIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - 20);
+    const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - 20);
 
     const endIndex = Math.min(
-      numRows,
-      Math.ceil(scrollBottom / rowHeight) + 20
+      items,
+      Math.ceil(scrollBottom / itemHeight) + 20
     );
 
-    const items = [];
+    const renderedItems = [];
     let index = startIndex;
     while (index < endIndex) {
-      items.push(<li key={index}><div>item {index + 1}</div></li>);
+      renderedItems.push(
+        <li key={index}>
+           {renderItem(index)}
+        </li>
+      );
       index++;
     }
+
+    const paddingTop = startIndex * itemHeight;
 
     return (
       <div className="scroll">
         <div className="scroll__overflow" onScroll={this.handleScroll}>
           <ul
             className="scroll__list"
-            style={{ paddingTop: startIndex * rowHeight, height: totalHeight }}
+            style={{ paddingTop, height: totalHeight }}
           >
-            {items}
+            {renderedItems}
           </ul>
         </div>
-        <pre>{JSON.stringify({availableHeight,scrollTop,scrollBottom,startIndex,endIndex},null,2)}</pre>
+        <pre>
+          Debug<br />
+          {JSON.stringify(
+            {
+              items,
+              renderedItems: renderedItems.length,
+              availableHeight,
+              scrollTop,
+              scrollBottom,
+              startIndex,
+              endIndex,
+              paddingTop,
+            },
+            null,
+            2
+          )}
+        </pre>
       </div>
     );
   }

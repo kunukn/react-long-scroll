@@ -2,17 +2,12 @@ import './App.css';
 import React from 'react';
 import Scroll from './Scroll';
 
-const App = props => {
-  let names = [];
-  for (let i = 1; i <= 7000; i++) {
-    names.push('random name ' + i);
-  }
 
-  return (
-    <div className="app">
-      <Scroll numRows={100000} rowHeight={50} />
-    </div>
-  );
-};
+const renderItem = (id) => <div>item {id + 1}</div>;
 
+const App = props => (
+  <div className="app">
+    <Scroll items={1000} itemHeight={50} renderItem={renderItem} />
+  </div>);
+  
 export default App;
