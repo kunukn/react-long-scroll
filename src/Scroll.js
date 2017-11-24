@@ -43,11 +43,12 @@ class Scroll extends React.Component {
     const { availableHeight, scrollTop } = this.state;
     const scrollBottom = scrollTop + availableHeight;
 
-    const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - 20);
+    const avoidWhiteScreenFlickerOnScrollOffset = 40;
+    const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - avoidWhiteScreenFlickerOnScrollOffset);
 
     const endIndex = Math.min(
       items,
-      Math.ceil(scrollBottom / itemHeight) + 20
+      Math.ceil(scrollBottom / itemHeight) + avoidWhiteScreenFlickerOnScrollOffset
     );
 
     const renderedItems = [];
