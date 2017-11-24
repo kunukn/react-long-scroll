@@ -11,7 +11,7 @@ Michael Jackson: Rendering with React | js.la January 2016
 
 
 
-
+---
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
